@@ -1,0 +1,54 @@
+create database Site
+default character set utf8
+default collate utf8_general_ci;
+
+create table alunos (
+id bigint not null auto_increment,
+Titulo varchar(30) NOT NULL,
+Tema varchar (20) not null,
+Autor varchar (20) not null, 
+classificacao enum ('M','F'),
+Valor bigint(6),
+primary key (id)
+) default charset = utf8;
+
+insert into alunos
+(nome, curso, nascimento, sexo, matricula)
+values
+('davinc', 'romance', '1995-08-13', 'M', '25487' );
+
+select * from alunos
+alunos
+
+
+Query ok, 0 Rows affected (0.25 séc)
+
+Load data local infile/caminho/arquivo.txt into tablet livros
+
+
+2° TABELA TESTE ----------
+
+create table editora
+(
+   id integer(11) primary key NOT NULL,
+   nome varchar(50) NOT NULL,
+   endereco varchar(50) NOT NULL
+);
+
+create table autor 
+(
+  id integer(11) primary key NOT NULL,
+  nome varchar(50) NOT NULL,
+  idade integer(3) NOT NULL
+);
+
+create table livro 
+(
+  id integer(11) primary key NOT NULL,
+  fk_autor integer(11) NOT NULL,
+  fk_editora integer(11) NULL,
+  titulo varchar(50) NOT NULL,
+  valor float NOT NULL,
+  foreign key(fk_autor) references autor(id),
+  foreign key(fk_editora) references editora(id)
+);
